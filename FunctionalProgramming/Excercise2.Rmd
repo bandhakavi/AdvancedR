@@ -1,0 +1,62 @@
+---
+title: "Excercise2"
+author: "Krishna Bandhakavi"
+date: "January 5, 2017"
+output: html_document
+---
+## Excercise 2
+1. Why are functions created by other functions called closures?
+> closure 'encloses' the created function's environment 
+
+What does the following statistical function do? What would be a better name for it? (The existing name is a bit of a hint.)
+```{r}
+bc <- function(lambda) {
+  if (lambda == 0) {
+    function(x) log(x)
+  } else {
+    function(x) (x ^ lambda - 1) / lambda
+  }
+}
+```
+> dont know the statistical significance of the function yet. will edit this  later
+
+What does approxfun() do? What does it return?
+
+> approxfun() interpolates points. it returns a list of such coordinates 
+
+What does ecdf() do? What does it return?
+
+>ecdf stands for Empirical Cumulative Distribution Function. 
+
+Create a function that creates functions that compute the ith central moment of a numeric vector. You can test it by running the following code:
+```{}
+moment = function(k){
+ function(x){
+ (1/length(x))*(sum((x-mean(x))^k))
+ }
+}
+```
+
+```{}
+m1 <- moment(1)
+m2 <- moment(2)
+
+x <- runif(100)
+stopifnot(all.equal(m1(x), 0))
+stopifnot(all.equal(m2(x), var(x) * 99 / 100))
+```
+
+Create a function pick() that takes an index, i, as an argument and returns a function with an argument x that subsets x with i.
+```{}
+pick = function(i){
+  function(x){
+  x[[i]]
+  }
+}
+```
+
+```{}
+lapply(mtcars, pick(5))
+# should do the same as this
+lapply(mtcars, function(x) x[[5]])
+```
