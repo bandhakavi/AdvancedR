@@ -9,6 +9,7 @@ output: html_document
 1. Instead of creating individual functions (e.g., midpoint(), trapezoid(), simpson(), etc.), we could store them in a list. If we did that, how would that change the code? Can you create the list of functions from a list of coefficients for the Newton-Cotes formulae?
 
 > I'm reusing newton_cotes and composite functions from the material unchanged and writing a briding Map function using a new consolidated coeff/open list.
+
 ```{R}
 newton_cotes = function(coeff,open=FALSE){
   n = length(coeff)+open
@@ -35,7 +36,7 @@ newton_cotes_coeffs_2 = list(FALSE,TRUE)
 newton_cotes_list = Map(newton_cotes,newton_cotes_coeffs_1,newton_cotes_coeffs_2)
 
 composite(sin, 0, pi, n = 10, rule = newton_cotes_list[[2]])
-## [1] 1.993829
+# [1] 1.993829
 ```
 
 2. The trade-off between integration rules is that more complex rules are slower to compute, but need fewer pieces. For sin() in the range [0, ??], determine the number of pieces needed so that each rule will be equally accurate. Illustrate your results with a graph. How do they change for different functions? sin(1 / x^2) is particularly challenging.
