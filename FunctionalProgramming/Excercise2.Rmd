@@ -2,9 +2,9 @@
 title: "Excercise2"
 author: "Krishna Bandhakavi"
 date: "January 5, 2017"
-output: html_document
+output: rmd_document
 ---
-## Excercise 2
+## Closures
 1. Why are functions created by other functions called closures?
 > closure 'encloses' the created function's environment 
 

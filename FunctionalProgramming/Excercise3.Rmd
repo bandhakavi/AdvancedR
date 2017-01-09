@@ -1,0 +1,30 @@
+---
+title: "Excercise3"
+author: "Krishna Bandhakavi"
+date: "January 6, 2017"
+output: rmd_document
+---
+
+## Lists of Functions
+
+1. Implement a summary function that works like base::summary(), but uses a list of functions. Modify the function so it returns a closure, making it possible to use it as a function factory.
+
+>I havent completed this yet, sharing my incomplete/ incorrect code
+
+```{R}
+object.list = list(df = data.frame(),fr=factor(), mx = matrix())
+summary.new = function(y){
+  parse(text = paste("summary",as.character(class(y)),sep = "."))
+}
+summary.new.list = lapply(object.list, summary.new)
+```
+
+2. Which of the following commands is equivalent to with(x, f(z))?
+
+    x$f(x$z).
+    f(x$z).
+    x$f(z).
+    f(z).
+    It depends.
+
+>f(x$z) or f(z)
